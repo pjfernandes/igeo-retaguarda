@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_215052) do
     t.string "last_name"
     t.string "registration"
     t.string "cpf"
-    t.boolean "admin"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
