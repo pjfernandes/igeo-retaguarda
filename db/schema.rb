@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_215052) do
   create_table "points", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "subject_id", null: false
+    t.string "name"
     t.float "latitude"
     t.float "longitude"
     t.string "date"
