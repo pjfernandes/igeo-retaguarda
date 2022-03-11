@@ -23,10 +23,9 @@ class SubjectsController < ApplicationController
 
   def create
     if current_user.admin?
-      @post = Subject.new(subject_params)
-      @subject.user = current_user
+      @subject = Subject.new(subject_params)
       if @subject.save
-        redirect_to subject_path(@subject), notice: 'Subject was successfully created!'
+        redirect_to subjects_path, notice: 'Subject was successfully created!'
       else
         render :new
       end
@@ -44,10 +43,14 @@ class SubjectsController < ApplicationController
   def update
     if current_user.admin?
       @subject = Subject.find(params[:id])
-      @subject.user = current_user
       @subject.update(subject_params)
       redirect_to subject_path(@subject)
     end
+  end
+
+  private
+  def subject_params
+    params.require(:subject).permit(:name, :teacher)
   end
 
 end

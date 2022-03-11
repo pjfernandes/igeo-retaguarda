@@ -1,0 +1,7 @@
+<h2>Adicionar disciplina</h2>
+
+ <%= simple_form_for @subject do |f| %>
+  <%= f.input :name, label: 'Nome'%>
+  <%= f.input :teacher, label: 'Professor'%>
+  <%= f.button :submit, "OK", class:"btn btn-danger mt-2 mb-2 pr-4 pl-4 mr-2" %>
+<% end %>

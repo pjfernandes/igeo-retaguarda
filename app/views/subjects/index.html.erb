@@ -1,0 +1,9 @@
+<h2>Disciplinas</h2>
+
+<% @subjects.each do |subject| %>
+  <p><%= subject.name %></p>
+<% end %>
+
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to "Nova disciplina", new_subject_path, class:"btn btn-danger mt-3 mb-2 ml-2" %>
+<% end %>
