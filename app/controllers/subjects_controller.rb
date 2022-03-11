@@ -7,6 +7,7 @@ class SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find(params[:id])
+    redirect_to subject_points_path(@subject)
   end
 
   def new

@@ -2,7 +2,7 @@
 
 <% @subjects.each do |subject| %>
   <p>
-    <%= subject.name %>
+    <%= link_to "#{subject.name}", subject_path(subject) %>
     <% if user_signed_in? && current_user.admin? %>
       <%= link_to "Editar", edit_subject_path(subject) %>
     <% end %>

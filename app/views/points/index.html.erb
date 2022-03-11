@@ -1,0 +1,7 @@
+<h2>Pontos</h2>
+
+<% @points.each do |point| %>
+  <p><%= point.id %> - <%= point.name %>
+<% end %>
+
+<%= link_to "+ Ponto", new_subject_point_path, class:"btn btn-danger mt-3 mb-2 ml-2" %>
