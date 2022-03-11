@@ -36,7 +36,7 @@ class SubjectsController < ApplicationController
     if current_user.admin?
       @subject = Subject.find(params[:id])
     else
-      redirect_to subject_path(@subject)
+      redirect_to subjects_path
     end
   end
 
@@ -44,7 +44,7 @@ class SubjectsController < ApplicationController
     if current_user.admin?
       @subject = Subject.find(params[:id])
       @subject.update(subject_params)
-      redirect_to subject_path(@subject)
+      redirect_to subjects_path
     end
   end
 

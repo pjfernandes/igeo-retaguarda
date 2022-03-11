@@ -1,7 +1,12 @@
 <h2>Disciplinas</h2>
 
 <% @subjects.each do |subject| %>
-  <p><%= subject.name %></p>
+  <p>
+    <%= subject.name %>
+    <% if user_signed_in? && current_user.admin? %>
+      <%= link_to "Editar", edit_subject_path(subject) %>
+    <% end %>
+  </p>
 <% end %>
 
 <% if user_signed_in? && current_user.admin? %>
