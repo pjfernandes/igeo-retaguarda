@@ -1,7 +1,7 @@
 class PointsController < ApplicationController
 
   def index
-    @points = Point.all
+    @points = Point.where(user_id: current_user, subject_id: params[:subject_id])
   end
 
   def show
@@ -10,13 +10,15 @@ class PointsController < ApplicationController
 
   def new
     @point = Point.new
+    @point.user = current_user
+    @subject = Subject.find(params[:subject_id])
+    @point.subject = @subject
   end
 
   def create
     @point = Point.new(point_params)
     @point.user = current_user
-    @subject = Subject.find(params[:id])
-    raise
+    @subject = Subject.find(params[:subject_id])
     @point.subject = @subject
 
     if @point.save
@@ -28,7 +30,7 @@ class PointsController < ApplicationController
 
   private
   def point_params
-    params.require(:point).permit(:name, :user_id, :subject_id)
+    params.require(:point).permit(:name, :lat, :long, :date, :time, :description, :user_id, :subject_id)
   end
 
 end

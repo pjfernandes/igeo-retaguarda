@@ -1,6 +1,7 @@
 <h2>Adicionar ponto</h2>
 
-  <%= simple_form_for [@point] do |f| %>
+<%= simple_form_for [@subject, @point] do |f| %>
   <%= f.input :name, label: 'Nome'%>
+
   <%= f.button :submit, "OK", class:"btn btn-danger mt-2 mb-2 pr-4 pl-4 mr-2" %>
 <% end %>
