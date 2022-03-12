@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Igeo</title>
+    <title>iGeo - Sua caderneta de campo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,9 +12,11 @@
   </head>
 
   <body>
+  <div class="content">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
     <%= yield %>
+  </div>
+    <%= render 'shared/footer' %>
   </body>
 </html>
