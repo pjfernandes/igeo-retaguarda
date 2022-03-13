@@ -21,7 +21,7 @@ class SubjectsController < ApplicationController
     if current_user.admin?
       @subject = Subject.new(subject_params)
       if @subject.save
-        redirect_to subjects_path, notice: 'Subject was successfully created!'
+        redirect_to subjects_path, notice: 'Disciplina adicionada!'
       else
         render :new
       end
@@ -46,7 +46,7 @@ class SubjectsController < ApplicationController
 
   private
   def subject_params
-    params.require(:subject).permit(:name, :teacher)
+    params.require(:subject).permit(:name, :teacher, :photo)
   end
 
 end

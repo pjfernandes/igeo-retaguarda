@@ -1,7 +1,8 @@
-<h2>Adicionar disciplina</h2>
+<h3 class="page-title mb-2"><i class="fa-solid fa-graduation-cap"></i> Adicionar disciplina</h3>
 
  <%= simple_form_for @subject do |f| %>
   <%= f.input :name, label: 'Nome'%>
   <%= f.input :teacher, label: 'Professor'%>
-  <%= f.button :submit, "OK", class:"btn btn-danger mt-2 mb-2 pr-4 pl-4 mr-2" %>
+  <%= f.input :photo, as: :file %>
+  <%= f.button :submit, "OK", class:"btn btn-primary text-white mt-2 mb-2" %>
 <% end %>
