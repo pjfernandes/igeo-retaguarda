@@ -1,14 +1,13 @@
-<h2>Disciplinas</h2>
+<h3 class="page-title mb-2"><i class="fa-solid fa-graduation-cap"></i> Disciplinas</h3>
 
-<% @subjects.each do |subject| %>
-  <p>
-    <%= link_to "#{subject.name}", subject_points_path(subject) %>
-    <% if user_signed_in? && current_user.admin? %>
-      <%= link_to "Editar", edit_subject_path(subject) %>
-    <% end %>
-  </p>
-<% end %>
+<div class="cards text-center">
+  <% @subjects.each do |subject| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <%= subject.name.capitalize %>
+    </div>
+  <% end %>
+</div>
 
 <% if user_signed_in? && current_user.admin? %>
-  <%= link_to "Nova disciplina", new_subject_path, class:"btn btn-danger mt-3 mb-2 ml-2" %>
+  <%= link_to "Nova disciplina", new_subject_path, class:"btn btn-primary text-white mt-3 mb-3" %>
 <% end %>
