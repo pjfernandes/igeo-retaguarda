@@ -1,7 +1,7 @@
 <h3 class="page-title mb-3"><i class="fa-solid fa-graduation-cap"></i> Disciplinas</h3>
 
 <div class="cards text-center">
-  <% @subjects.each do |subject| %>
+  <% @subjects.sort_by{ |subject| subject.name.downcase }.each do |subject| %>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path subject.photo.key, height: 300, crop: :fill %>')">
       <%=link_to "#{subject.name.capitalize}", subject_points_path(subject) %>
     </div>
