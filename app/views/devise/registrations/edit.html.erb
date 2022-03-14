@@ -1,4 +1,4 @@
-<h3 class="page-title"><i class="fas fa-user-astronaut text-primary"></i> Editar perfil de <%= current_user.first_name.capitalize %></h3>
+<h3 class="page-title"><i class="fas fa-user-astronaut text-primary"></i> Editar perfil de <span class="text-primary"><%= current_user.first_name.capitalize %></span></h3>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -27,7 +27,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update", class: "btn btn-primary text-white mb-2" %>
+    <%= f.button :submit, "Atualizar", class: "btn btn-primary text-white mb-2" %>
   </div>
 <% end %>
 
