@@ -54,7 +54,7 @@ class PointsController < ApplicationController
 
   private
   def point_params
-    params.require(:point).permit(:name, :latitude, :longitude, :date, :time, :description, :user_id, :subject_id)
+    params.require(:point).permit(:name, :latitude, :longitude, :date, :time, :description, :user_id, :subject_id, photos: [])
   end
 
 end
