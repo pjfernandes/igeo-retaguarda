@@ -14,8 +14,10 @@
   </div>
 </div>
 
-<% @point.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% if @point.photos.attached? %>
+  <% @point.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
 <% end %>
 
 <%= link_to "Voltar", :back, class: "btn btn-secondary"%>
