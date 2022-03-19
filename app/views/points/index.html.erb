@@ -5,6 +5,24 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
+<div class="form text-center mt-3">
+  <%= form_tag subject_points_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Buscar pontos"
+    %>
+
+  <div>
+    <%= submit_tag "Buscar", class: "btn btn-primary btn-sm text-center text-white mt-3" %>
+    <%= link_to "Deletar busca", request.path, class:"btn btn-primary btn-sm text-white mt-3 mb-2 ml-2" %>
+  <% end %>
+  <% params.permit! %>
+  <%= link_to "Exportar", subject_points_path(params.merge(format: "csv")), class: "btn btn-secondary btn-sm mt-3 mb-2 ml-2"%>
+
+  </div>
+</div>
+
 <div class="points-container">
   <%@points.each do |point|%>
   <% date_point = point.date[4] + point.date[5] + "/" + point.date[11] +"/" + point.date[17] + point.date[18] + point.date[19] + point.date[20] %>

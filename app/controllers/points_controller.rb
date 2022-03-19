@@ -1,7 +1,12 @@
 class PointsController < ApplicationController
 
   def index
-    @points = Point.where(user_id: current_user, subject_id: params[:subject_id])
+    if params[:query].present?
+    @points = Point.global_search(params[:query]).where(user_id: current_user, subject_id: params[:subject_id])
+    else
+      @points = Point.where(user_id: current_user, subject_id: params[:subject_id])
+    end
+
     @markers = @points.map do |point|
       {
         lat: point.latitude,
