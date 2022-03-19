@@ -2,10 +2,22 @@ class PointsController < ApplicationController
 
   def index
     @points = Point.where(user_id: current_user, subject_id: params[:subject_id])
+    @markers = @points.map do |point|
+      {
+        lat: point.latitude,
+        lng: point.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { point: point })
+      }
+    end
   end
 
   def show
     @point = Point.find(params[:id])
+    if @point.user == current_user
+      @point
+    else
+     redirect_to root_path, notice: 'Ação proibida'
+    end
   end
 
   def new

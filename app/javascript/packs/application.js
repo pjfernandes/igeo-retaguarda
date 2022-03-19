@@ -18,3 +18,13 @@ require("channels")
 
 import "controllers"
 import "bootstrap"
+// internal imports
+import { initMapbox } from '../plugins/init_mapbox';
+
+// CSS
+//import 'mapbox-gl/dist/mapbox-gl.css';
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your functions here, e.g:
+  initMapbox();
+});

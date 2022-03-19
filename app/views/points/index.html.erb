@@ -1,5 +1,10 @@
 <h3 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> Pontos - <span class="text-primary"><%= Subject.find(params[:subject_id]).name.capitalize %></span></h3>
 
+<div id="map"
+     style="width: 100%; height: 350px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
 <div class="points-container">
   <%@points.each do |point|%>
   <% date_point = point.date[4] + point.date[5] + "/" + point.date[11] +"/" + point.date[17] + point.date[18] + point.date[19] + point.date[20] %>

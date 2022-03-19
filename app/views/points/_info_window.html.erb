@@ -1,0 +1,10 @@
+<% @points.map do |point|%>
+  <% date_point = point.date[4] + point.date[5] + "/" + point.date[11] +"/" + point.date[17] + point.date[18] + point.date[19] + point.date[20] %>
+
+  <div class="border-bottom">
+    <p class="text-center text-dark"><strong><i class="fas fa-info-circle text-primary"></i> <%= link_to point.name.capitalize, point_path(point) %></strong></p>
+  </div>
+  <div class="text-left text-dark">
+    <p><i class="page-title fas fa-calendar text-primary"></i> <strong>Data:</strong> <%=date_point%></p>
+  </div>
+<%end%>
