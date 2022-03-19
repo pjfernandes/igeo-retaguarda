@@ -32,7 +32,7 @@
         <p><i class="page-title fas fa-calendar text-primary"></i> <%=date_point%></p>
         <p><i class="page-title fas fa-globe-americas text-primary"></i> <strong>Lat:</strong> <%=point.latitude%> <strong class="text-primary">-</strong> <strong>Long:</strong> <%=point.longitude%></p>
     </div>
-    <%= link_to "Info", subject_points_path(point), class:"page-title btn btn-primary btn-sm text-white" %>
+    <%= link_to "Info", point_path(point), class:"page-title btn btn-primary btn-sm text-white" %>
   </div>
   <%end%>
 </div>

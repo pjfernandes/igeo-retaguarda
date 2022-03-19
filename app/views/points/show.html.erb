@@ -1,1 +1,17 @@
-<h2>Hi</h2>
+<% date_point = @point.date[4] + @point.date[5] + "/" + @point.date[11] +"/" + @point.date[17] + @point.date[18] + @point.date[19] + @point.date[20] %>
+
+<h3 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> <%= @point.name.capitalize %> - <span class="text-primary"><%= date_point %></span></h3>
+<p class="text-secondary"><strong>Lat:</strong> <%=@point.latitude%> <strong class="text-primary">-</strong> <strong>Long:</strong> <%=@point.longitude%></p>
+
+<div id="map"
+     style="width: 100%; height: 300px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+<div class="point-description border rounded bg-white mb-2 text-break text-left mt-3">
+  <div class="p-3">
+    <%= @point.description %>
+  </div>
+</div>
+
+<%= link_to "Voltar", :back, class: "btn btn-secondary"%>

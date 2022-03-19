@@ -20,6 +20,13 @@ class PointsController < ApplicationController
     @point = Point.find(params[:id])
     if @point.user == current_user
       @point
+      @markers = [
+        {
+          lat: @point.latitude,
+          lng: @point.longitude,
+          #info_window: render_to_string(partial: "info_location", locals: { sample: @sample })
+        }
+      ]
     else
      redirect_to root_path, notice: 'Ação proibida'
     end
