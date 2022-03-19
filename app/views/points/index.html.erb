@@ -1,4 +1,4 @@
-<h3 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> Pontos</h3>
+<h3 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> Pontos - <span class="text-primary"><%= Subject.find(params[:subject_id]).name.capitalize %></span></h3>
 
 <div class="points-container">
   <%@points.each do |point|%>
