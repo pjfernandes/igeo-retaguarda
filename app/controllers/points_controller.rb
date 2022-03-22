@@ -48,7 +48,7 @@ class PointsController < ApplicationController
     @subject = Subject.find(params[:subject_id])
     @point.subject = @subject
     if @point.save
-      redirect_to subject_points_path(@subject), notice: 'Ponto adicionado com sucesso!'
+      redirect_to subject_points_path(@subject, anchor: "point-#{@point.id}"), notice: 'Ponto adicionado com sucesso!'
     else
       render :new
     end
