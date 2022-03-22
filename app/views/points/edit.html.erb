@@ -1,6 +1,7 @@
 <h3 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> Editar ponto</h3>
 
-<%= simple_form_for [@subject, @point] do |f| %>
+<%= simple_form_for([ @subject, @point ], remote: true) do |f| %>
+
   <%= f.input :name, label: 'Nome' %>
   <%= f.input :latitude, label: 'Latitude' %>
   <%= f.input :longitude, label: 'Longitude' %>
@@ -9,5 +10,5 @@
   <%= f.input :description, label: 'Descrição', as: :text %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.button :submit, "OK", class:"btn btn-primary text-white mb-2 mr-2" %>
-  <%= link_to "Voltar", subject_points_path, class:"btn btn-secondary mb-2" %>
+  <%= link_to "Voltar", subject_points_path(@subject), class:"btn btn-secondary mb-2" %>
 <% end %>

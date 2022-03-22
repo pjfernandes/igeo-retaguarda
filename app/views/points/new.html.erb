@@ -1,6 +1,6 @@
-<h3 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> Novo ponto</h3>
+<h3 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> Ponto em <span class="text-primary"><%=@subject.name.capitalize%></span></h3>
 
-<%= simple_form_for [@subject, @point] do |f| %>
+<%= simple_form_for([ @subject, @point ], remote: true) do |f| %>
   <%= f.input :name, label: 'Nome', required: true %>
   <%= f.input :latitude, label: 'Latitude', required: true %>
   <%= f.input :longitude, label: 'Longitude', required: true %>

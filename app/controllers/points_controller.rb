@@ -7,6 +7,8 @@ class PointsController < ApplicationController
       @points = Point.where(user_id: current_user, subject_id: params[:subject_id])
     end
 
+    @subject = @points.first.subject if @points.size > 0
+
     @markers = @points.map do |point|
       {
         lat: point.latitude,
@@ -18,8 +20,8 @@ class PointsController < ApplicationController
 
   def show
     @point = Point.find(params[:id])
+    @subject = @point.subject
     if @point.user == current_user
-      @point
       @markers = [
         {
           lat: @point.latitude,
@@ -54,10 +56,12 @@ class PointsController < ApplicationController
 
   def edit
     @point = Point.find(params[:id])
+    @subject = @point.subject
   end
 
   def update
     @point = Point.find(params[:id])
+    @subject = @point.subject
     if @point.user == current_user
       @point.update(point_params)
       redirect_to subject_point_path(@point), notice: 'Ponto editado com sucesso!'
