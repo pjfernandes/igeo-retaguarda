@@ -20,4 +20,11 @@
   <% end %>
 <% end %>
 
-<%= link_to "Voltar", :back, class: "btn btn-secondary"%>
+<div class="buttons">
+  <%= link_to "Editar", edit_subject_point_path(@point), class: "btn btn-primary text-white"%>
+  <%= link_to "Delete",
+          subject_point_path(@point),
+          method: :delete,
+          data: { confirm: "Tem certeza?" }, class:"btn btn-danger text-white" %>
+  <%= link_to "Voltar", subject_points_path(@point.subject), class: "btn btn-secondary"%>
+</div>

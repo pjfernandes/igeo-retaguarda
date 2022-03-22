@@ -45,11 +45,34 @@ class PointsController < ApplicationController
     @point.user = current_user
     @subject = Subject.find(params[:subject_id])
     @point.subject = @subject
-
     if @point.save
       redirect_to subject_points_path(@subject), notice: 'Ponto adicionado com sucesso!'
     else
       render :new
+    end
+  end
+
+  def edit
+    @point = Point.find(params[:id])
+  end
+
+  def update
+    @point = Point.find(params[:id])
+    if @point.user == current_user
+      @point.update(point_params)
+      redirect_to subject_point_path(@point), notice: 'Ponto editado com sucesso!'
+    else
+      redirect_to root_path, notice: 'Ação proibida'
+    end
+  end
+
+  def destroy
+    @point = Point.find(params[:id])
+    if @point.user == current_user
+      @point.destroy
+      redirect_to subject_points_path(@point.subject)
+    else
+      redirect_to root_path, notice: 'Ação proibida'
     end
   end
 
