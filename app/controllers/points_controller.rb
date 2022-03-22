@@ -24,7 +24,8 @@ class PointsController < ApplicationController
         {
           lat: @point.latitude,
           lng: @point.longitude,
-          #info_window: render_to_string(partial: "info_location", locals: { sample: @sample })
+          info_window: "<div><i class='page-title fa-solid fa-location-dot text-primary'></i> <strong>Lat:</strong> #{@point.latitude} <strong class='text-primary'>-</strong> <strong>Long:</strong> #{@point.longitude}
+                        </div>"
         }
       ]
     else
