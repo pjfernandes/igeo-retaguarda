@@ -20,8 +20,10 @@
   <div class="photos">
     <% if @point.photos.attached? %>
       <% @point.photos.each do |photo| %>
-        <div class="photo">
-          <%= cl_image_tag photo.key, height: 200, width: 300, crop: :fill %>
+        <div>
+          <a href="<%=cloudinary_url(photo.key)%>" target="_blank">
+            <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill, class: "photo" %>
+          </a>
         </div>
       <% end %>
     <% end %>

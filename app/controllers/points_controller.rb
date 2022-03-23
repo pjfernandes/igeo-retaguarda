@@ -31,7 +31,7 @@ class PointsController < ApplicationController
         }
       ]
     else
-     redirect_to root_path, notice: 'Ação proibida'
+      redirect_to root_path, notice: 'Ação proibida'
     end
   end
 
