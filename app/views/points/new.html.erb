@@ -1,5 +1,11 @@
 <h3 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> Ponto em <span class="text-primary"><%=@subject.name.capitalize%></span></h3>
 
+<div id="map-new-point" class="mb-2 mt-2"
+     style="width: 100%; height: 300px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
 <%= simple_form_for([ @subject, @point ], remote: true) do |f| %>
   <%= f.input :name, label: 'Nome', required: true %>
   <%= f.input :latitude, label: 'Latitude', required: true %>
