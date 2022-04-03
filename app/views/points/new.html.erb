@@ -1,11 +1,10 @@
 <h3 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> Ponto em <span class="text-primary"><%=@subject.name.capitalize%></span></h3>
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
 
-<div id="map-new-point" class="mb-2 mt-2"
-     style="width: 100%; height: 300px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+
+
+<div id="map-new-point" class="mb-3 mt-2" style="width: 100%; height: 300px;">
 </div>
 
 <%= simple_form_for([ @subject, @point ], remote: true) do |f| %>
@@ -19,3 +18,65 @@
   <%= f.button :submit, "OK", class:"btn btn-primary text-white mb-2 mr-2" %>
   <%= link_to "Voltar", subject_points_path, class:"btn btn-secondary mb-2" %>
 <% end %>
+
+<script>
+    const createCoords = () => {
+      if (document.querySelector(".simple_form")) {
+        var options = {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0
+        };
+
+        var coords;
+        function success(pos) {
+          coords = [pos.coords.longitude, pos.coords.latitude];
+          document.getElementById("point_latitude").value = coords[1];
+          document.getElementById("point_longitude").value = coords[0];
+          console.log(coords);
+
+          mapboxgl.accessToken = 'pk.eyJ1IjoicGpmZXJuYW5kZXMiLCJhIjoiY2t1c291Z3lzNWg2bzJvbW5kNWNhbnZhaCJ9.eYxvagOUGuS5qDo-zOfRCA';
+
+        };
+
+        function error(err) {
+          console.warn('ERROR(' + err.code + '): ' + err.message);
+        };
+        navigator.geolocation.getCurrentPosition(success, error, options);
+      }
+  };
+
+  createCoords();
+</script>
+
+<script>
+  window.addEventListener('load', function () {
+    let coordsArray = [];
+    coordsArray[0] = parseFloat(document.getElementById("point_longitude").value);
+    coordsArray[1] = parseFloat(document.getElementById("point_latitude").value);
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoicGpmZXJuYW5kZXMiLCJhIjoiY2t1c291Z3lzNWg2bzJvbW5kNWNhbnZhaCJ9.eYxvagOUGuS5qDo-zOfRCA';
+
+    var map = new mapboxgl.Map({
+        container: 'map-new-point',
+        style: "mapbox://styles/mapbox/satellite-v9",
+        center: coordsArray,
+        zoom: 9
+      });
+
+    const mapDiv = document.getElementById("map-new-point");
+    mapDiv.insertAdjacentHTML('beforeend', map);
+
+    var el = document.createElement('div');
+    el.id = 'marker';
+    var marker = new mapboxgl.Marker();
+    marker
+      //.remove()
+      .setLngLat(coordsArray)
+      .addTo(map);
+  });
+</script>
+
+<style>
+
+</style>
