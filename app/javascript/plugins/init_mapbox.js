@@ -12,20 +12,24 @@ const buildMap = (mapElement) => {
 };
 
 const addMarkersToMap = (map, markers) => {
-  markers.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.info_window); // add this
+  if (markers) {
+    markers.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window); // add this
 
-    new mapboxgl.Marker()
-      .setLngLat([marker.lng, marker.lat])
-      .setPopup(popup) // add this
-      .addTo(map);
-  });
+      new mapboxgl.Marker()
+        .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup) // add this
+        .addTo(map);
+    });
+  };
 };
 
 const fitMapToMarkers = (map, markers) => {
-  const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
-  map.fitBounds(bounds, { padding: 0, maxZoom: 10 });
+  if (markers) {
+    const bounds = new mapboxgl.LngLatBounds();
+    markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+    map.fitBounds(bounds, { padding: 0, maxZoom: 10 });
+    }
 };
 
 const initMapbox = () => {

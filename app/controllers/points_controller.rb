@@ -8,13 +8,14 @@ class PointsController < ApplicationController
     end
 
     @subject = @points.first.subject if @points.size > 0
-
-    @markers = @points.map do |point|
-      {
-        lat: point.latitude,
-        lng: point.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { point: point })
-      }
+    unless @points.empty?
+      @markers = @points.map do |point|
+          {
+            lat: point.latitude,
+            lng: point.longitude,
+            info_window: render_to_string(partial: "info_window", locals: { point: point })
+          }
+      end
     end
   end
 
