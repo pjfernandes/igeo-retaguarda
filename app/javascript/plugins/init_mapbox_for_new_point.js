@@ -1,6 +1,6 @@
 import mapboxgl from '!mapbox-gl';
 
-let coords = [-43, -22];
+let coords;
 
 const returnCoords = () => {
   var options = {
@@ -16,14 +16,14 @@ const returnCoords = () => {
   };
 
   function error(err) {
-    console.warn('ERROR(' + err.code + '): ' + err.message);
+    coords = [-43, -22];
   };
 
   navigator.geolocation.getCurrentPosition(success, error, options);
 
 };
 
-//returnCoords();
+returnCoords();
 
 function buildMapNewPoint() {
   mapboxgl.accessToken = 'pk.eyJ1IjoicGpmZXJuYW5kZXMiLCJhIjoiY2t1c291Z3lzNWg2bzJvbW5kNWNhbnZhaCJ9.eYxvagOUGuS5qDo-zOfRCA';
@@ -33,7 +33,7 @@ function buildMapNewPoint() {
       container: 'map-new-point',
       style: "mapbox://styles/mapbox/satellite-v9",
       center: coords,
-      zoom: 9
+      zoom: 2
     });
 
     var el = document.createElement('div');
