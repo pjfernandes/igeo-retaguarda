@@ -1,6 +1,7 @@
-<% date_point = @point.date[4] + @point.date[5] + "/" + @point.date[11] +"/" + @point.date[17] + @point.date[18] + @point.date[19] + @point.date[20] %>
+<%# date_point = @point.date[4] + @point.date[5] + "/" + @point.date[11] +"/" + @point.date[17] + @point.date[18] + @point.date[19] + @point.date[20] %>
+<% date_point = eval(@point.date)[3].to_s + "/" + eval(@point.date)[2].to_s + "/" + eval(@point.date)[1].to_s  %>
 
-<h3 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> <%= @point.name.capitalize %> - <span class="text-primary"><%= date_point %></span></h3>
+<h5 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> <%= @point.name.capitalize %> - <span class="text-primary"><%= date_point %></span></h5>
 <p class="text-secondary"><strong>Lat:</strong> <%=@point.latitude%> <strong class="text-primary">-</strong> <strong>Long:</strong> <%=@point.longitude%></p>
 
 <div id="map"
@@ -16,7 +17,9 @@
 </div>
 
 <div class="photo-content mt-4 mb-4">
-  <h5 class="page-title mb-3"><i class="fa-solid fa-camera text-primary"></i> Fotos</h5>
+  <% if @point.photos.attached? %>
+    <h5 class="page-title mb-3"><i class="fa-solid fa-camera text-primary"></i> Fotos</h5>
+  <% end %>
   <div class="photos">
     <% if @point.photos.attached? %>
       <% @point.photos.each do |photo| %>
