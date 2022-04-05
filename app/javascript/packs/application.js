@@ -20,8 +20,8 @@ import "controllers"
 import "bootstrap"
 // internal imports
 import { initMapbox } from '../plugins/init_mapbox';
-//import { createCoords } from '../plugins/coordinates';
-//import { buildMapNewPoint } from '../plugins/init_mapbox_for_new_point';
+import { createCoords } from '../plugins/coordinates';
+import { buildMapNewPoint } from '../plugins/init_mapbox_for_new_point';
 
 // CSS
 //import 'mapbox-gl/dist/mapbox-gl.css';
@@ -29,6 +29,6 @@ import { initMapbox } from '../plugins/init_mapbox';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initMapbox();
-  //createCoords() ;
-  //buildMapNewPoint();
+  createCoords() ;
+  buildMapNewPoint();
 });
