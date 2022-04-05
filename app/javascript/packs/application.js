@@ -21,6 +21,7 @@ import "bootstrap"
 // internal imports
 import { initMapbox } from '../plugins/init_mapbox';
 import { createCoords } from '../plugins/coordinates';
+import { buildMapNewPoint } from '../plugins/init_mapbox_for_new_point';
 
 // CSS
 //import 'mapbox-gl/dist/mapbox-gl.css';
@@ -29,4 +30,5 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initMapbox();
   if (document.getElementById("new_point")) { createCoords() };
+  if (document.getElementById("new_point")) { buildMapNewPoint() };
 });
