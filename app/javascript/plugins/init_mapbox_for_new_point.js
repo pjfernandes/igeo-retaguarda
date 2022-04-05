@@ -1,6 +1,6 @@
 import mapboxgl from '!mapbox-gl';
 
-let coords;
+let coords = [-43, -22];
 
 const returnCoords = () => {
   var options = {
@@ -23,7 +23,7 @@ const returnCoords = () => {
 
 };
 
-returnCoords();
+//returnCoords();
 
 function buildMapNewPoint() {
   mapboxgl.accessToken = 'pk.eyJ1IjoicGpmZXJuYW5kZXMiLCJhIjoiY2t1c291Z3lzNWg2bzJvbW5kNWNhbnZhaCJ9.eYxvagOUGuS5qDo-zOfRCA';
