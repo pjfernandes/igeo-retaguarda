@@ -1,5 +1,30 @@
 import mapboxgl from '!mapbox-gl';
 
+let coords;
+
+const returnCoords = () => {
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+
+  function success(pos) {
+    coords = [pos.coords.longitude, pos.coords.latitude];
+    console.log(coords);
+    //return coords;
+  };
+
+  function error(err) {
+    console.warn('ERROR(' + err.code + '): ' + err.message);
+  };
+
+  return navigator.geolocation.getCurrentPosition(success, error, options);
+
+};
+
+returnCoords();
+
 function buildMapNewPoint() {
   mapboxgl.accessToken = 'pk.eyJ1IjoicGpmZXJuYW5kZXMiLCJhIjoiY2t1c291Z3lzNWg2bzJvbW5kNWNhbnZhaCJ9.eYxvagOUGuS5qDo-zOfRCA';
 
@@ -8,7 +33,7 @@ function buildMapNewPoint() {
   let map = new mapboxgl.Map({
     container: 'map-new-point',
     style: "mapbox://styles/mapbox/satellite-v9",
-    center: [-43, -22],
+    center: coords,
     zoom: 9
   });
 
@@ -16,7 +41,7 @@ function buildMapNewPoint() {
   el.id = 'marker';
   var marker = new mapboxgl.Marker();
   marker
-    .setLngLat([-43, -22])
+    .setLngLat(coords)
     .addTo(map);
 
   function add_marker(event) {
