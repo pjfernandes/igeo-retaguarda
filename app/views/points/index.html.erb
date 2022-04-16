@@ -26,7 +26,7 @@
     <%@points.each do |point|%>
       <% date_point = eval(point.date)[3].to_s + "/" + eval(point.date)[2].to_s + "/" + eval(point.date)[1].to_s  %>
       <div class="card-product mt-3 mb-4 rounded d-flex justify-content-between p-2">
-        <div class="card-product-infos ml-3 mt-1 text-break p-3">
+        <div class="card-product-infos text-break">
           <h6><i class="page-title fa-solid fa-location-dot text-primary"></i> <%=point.name.capitalize%> </h6>
           <p><i class="page-title fas fa-calendar text-primary"></i> <%=date_point%></p>
           <p><i class="page-title fas fa-globe-americas text-primary"></i> <strong>Lat:</strong> <%=point.latitude.round(1)%></p>
