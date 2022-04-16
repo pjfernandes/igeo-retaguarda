@@ -66,3 +66,4 @@ gem "geocoder"
 gem 'pg_search', '~> 2.3.0'
 gem "turbolinks_render"
 gem "csv"
+gem 'rails_admin', '~> 2.0'
