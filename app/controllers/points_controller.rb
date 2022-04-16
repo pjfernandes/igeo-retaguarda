@@ -7,15 +7,30 @@ class PointsController < ApplicationController
       @points = Point.where(user_id: current_user, subject_id: params[:subject_id])
     end
 
+
+
     @subject = @points.first.subject if @points.size > 0
     unless @points.empty?
       @markers = @points.map do |point|
           {
             lat: point.latitude,
             lng: point.longitude,
-            info_window: render_to_string(partial: "info_window", locals: { point: point })
-          }
+            #info_window: render_to_string(partial: "info_window", locals: { point: point })
+            info_window: "<div class='border-bottom'>
+                              <p class='text-center text-dark'><strong><i class='fas fa-info-circle text-primary'></i> <a href='#{point_path(point)}'>#{point.name.capitalize}</a></strong></p>
+                            </div>
+
+                            <div class='text-left text-dark'>
+                              <p><i class='page-title fas fa-calendar text-primary'></i> <strong>Data:</strong> #{eval(point.date)[3].to_s + "/" + eval(point.date)[2].to_s + "/" + eval(point.date)[1].to_s }</p>
+                              <p><i class='page-title fas fa-globe-americas text-primary'></i> <strong>Lat:</strong> #{point.latitude.round(4)} <strong class='text-primary'>-</strong> <strong>Long:</strong> #{point.longitude.round(4)}</p>
+                            </div>"
+              }
       end
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data Point.to_csv(@points), filename: "points.csv" }
     end
   end
 

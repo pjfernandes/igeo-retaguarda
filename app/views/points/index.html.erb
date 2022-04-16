@@ -32,7 +32,8 @@
         <div class="card-product-infos ml-3 mt-1 text-break">
             <h6><i class="page-title fa-solid fa-location-dot text-primary"></i> <%=point.name.capitalize%> </h6>
             <p><i class="page-title fas fa-calendar text-primary"></i> <%=date_point%></p>
-            <p><i class="page-title fas fa-globe-americas text-primary"></i> <strong>Lat:</strong> <%=point.latitude.round(1)%> <strong class="text-primary">-</strong> <strong>Long:</strong> <%=point.longitude.round(1)%></p>
+            <p><i class="page-title fas fa-globe-americas text-primary"></i> <strong>Lat:</strong> <%=point.latitude.round(1)%></p>
+            <p><i class="page-title fas fa-globe-americas text-primary"></i> <strong>Long:</strong> <%=point.longitude.round(1)%></p>
         </div>
         <div class="buttons">
           <%= link_to "Info", subject_point_path(@subject, point), class:"page-title btn btn-primary btn-sm text-white" %>
