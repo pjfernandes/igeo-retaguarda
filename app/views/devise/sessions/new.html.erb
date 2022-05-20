@@ -1,4 +1,8 @@
-<h3 class="page-title mb-2"><i class="fa-solid fa-right-to-bracket"></i> Log in</h3>
+<div class="login-logo-div">
+  <%= image_tag("logo-login.png", class:"login-logo mb-4") %>
+</div>
+
+<h5 class="page-title mb-2"><i class="fa-solid fa-right-to-bracket"></i> Log in</h5>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
@@ -11,7 +15,7 @@
                 required: true,
                 label: 'Senha',
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, label: 'Lembrar', as: :boolean if devise_mapping.rememberable? %>
+    <%#= f.input :remember_me, label: 'Lembrar', as: :boolean if devise_mapping.rememberable? %>
   </div>
 
   <div class="form-actions">
@@ -20,3 +24,7 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<div class="develop text-secondary mt-4">
+  Desenvolvido pelo <span class="text-primary">LAGEF</span> (UFF)
+</div>

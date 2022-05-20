@@ -36,10 +36,10 @@
 </div>
 
 <div class="buttons">
-  <%= link_to "Editar", edit_subject_point_path(@subject, @point), class: "btn btn-primary text-white"%>
+  <%= link_to "Editar", edit_user_subject_point_path(current_user, @subject, @point), class: "btn btn-primary text-white"%>
   <%= link_to "Delete",
-          subject_point_path(@subject, @point),
+          user_subject_point_path(current_user, @subject, @point),
           method: :delete, remote: true,
           data: { confirm: "Tem certeza?" }, class:"btn btn-danger text-white" %>
-  <%= link_to "Voltar", subject_points_path(@point.subject), class: "btn btn-secondary"%>
+  <%= link_to "Voltar", user_subject_points_path(current_user, @point.subject), class: "btn btn-secondary"%>
 </div>

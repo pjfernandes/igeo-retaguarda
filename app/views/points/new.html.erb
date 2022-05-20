@@ -7,7 +7,7 @@
      style="width: 100%; height: 300px;"> </div>
 
 
-<%= simple_form_for([ @subject, @point ], remote: true) do |f| %>
+<%= simple_form_for([ current_user, @subject, @point ], remote: true) do |f| %>
   <%= f.input :name, label: 'Nome', required: true %>
   <%= f.input :latitude, label: 'Latitude', required: true %>
   <%= f.input :longitude, label: 'Longitude', required: true %>
@@ -16,5 +16,5 @@
   <%= f.input :description, label: 'Descrição', as: :text, required: true %>
   <%= f.input :photos, label: 'Fotos', as: :file, input_html: { multiple: true } %>
   <%= f.button :submit, "OK", class:"btn btn-primary text-white mb-2 mr-2" %>
-  <%= link_to "Voltar", subject_points_path, class:"btn btn-secondary mb-2" %>
+  <%= link_to "Voltar", user_subject_points_path, class:"btn btn-secondary mb-2" %>
 <% end %>

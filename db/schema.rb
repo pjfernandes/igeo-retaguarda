@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_13_023047) do
+ActiveRecord::Schema.define(version: 2022_05_20_005351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2022_03_13_023047) do
     t.string "teacher"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_subjects_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,4 +80,5 @@ ActiveRecord::Schema.define(version: 2022_03_13_023047) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "points", "subjects"
   add_foreign_key "points", "users"
+  add_foreign_key "subjects", "users"
 end

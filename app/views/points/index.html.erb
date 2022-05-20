@@ -7,7 +7,7 @@
 
 <% if @points.size > 0 %>
   <div class="form text-center mt-3">
-    <%= form_tag subject_points_path, method: :get do %>
+    <%= form_tag user_subject_points_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
@@ -17,8 +17,7 @@
       <%= link_to "Deletar busca", request.path, class:"btn btn-primary btn-sm text-white mt-3 mb-2 ml-2" %>
     <% end %>
     <% params.permit! %>
-    <%= link_to "Exportar", subject_points_path(params.merge(format: "csv")), class: "btn btn-secondary btn-sm mt-3 mb-2 ml-2"%>
-
+    <%= link_to "Exportar", user_subject_points_path(params.merge(format: "csv")), class: "btn btn-secondary btn-sm mt-3 mb-2 ml-2"%>
     </div>
   </div>
 
@@ -33,9 +32,9 @@
           <p><i class="page-title fas fa-globe-americas text-primary"></i> <strong>Long:</strong> <%=point.longitude.round(1)%></p>
         </div>
         <div class="buttons">
-          <%= link_to "Info", subject_point_path(@subject, point), class:"page-title btn btn-primary btn-sm text-white" %>
+          <%= link_to "Info", user_subject_point_path(current_user, @subject, point), class:"page-title btn btn-primary btn-sm text-white" %>
           <%= link_to "Delete",
-            subject_point_path(@subject, point),
+            user_subject_point_path(current_user, @subject, point),
             method: :delete, remote: true,
             data: { confirm: "Tem certeza?" }, class:"btn btn-danger btn-sm text-white" %>
         </div>
@@ -44,5 +43,5 @@
   </div>
 <% end %>
 
-<%= link_to "+ Ponto", new_subject_point_path, class:"btn btn-primary text-white mb-2 mr-2" %>
-<%= link_to "Voltar", subjects_path, class:"btn btn-secondary mb-2 ml-4" %>
+<%= link_to "+ Ponto", new_user_subject_point_path, class:"btn btn-primary text-white mb-2 mr-2" %>
+<%= link_to "Voltar", user_subjects_path(current_user), class:"btn btn-secondary mb-2 ml-4" %>

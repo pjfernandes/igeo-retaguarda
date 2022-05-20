@@ -1,6 +1,6 @@
 <h3 class="page-title mb-2"><i class="fa-solid fa-graduation-cap"></i> Adicionar disciplina</h3>
 
- <%= simple_form_for @subject do |f| %>
+ <%= simple_form_for [current_user, @subject] do |f| %>
   <%= f.input :name, label: 'Nome', required: true %>
   <%= f.input :teacher, label: 'Professor'%>
   <%= f.input :photo, as: :file %>

@@ -1,52 +1,56 @@
 class SubjectsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index]
+  #skip_before_action :authenticate_user!, only: %i[index]
 
   def index
-    @subjects = Subject.all
+    @subjects = Subject.where(user_id: current_user)
   end
 
   def show
-    @subject = Subject.find(params[:id])
-  end
-
-  def new
-    if current_user.admin?
-      @subject = Subject.new
+    @subjects = Subject.where(user_id: current_user)
+    if @subjects.first.user == current_user
+      @subject = Subject.where(params[:id])
     else
-      redirect_to root_path
+      redirect_to user_subjects_path(current_user), notice: 'Ação proibida.'
     end
   end
 
+  def new
+    @subject = Subject.new
+    @subject.user_id = current_user
+  end
+
   def create
-    if current_user.admin?
-      @subject = Subject.new(subject_params)
-      if @subject.save
-        redirect_to subjects_path, notice: 'Disciplina adicionada!'
-      else
-        render :new
-      end
+    @subject = Subject.new(subject_params)
+    @subject.user_id = params[:user_id]
+    if @subject.save
+      redirect_to user_subjects_path(current_user), notice: 'Campo adicionado!'
+    else
+      render :new
     end
   end
 
   def edit
-    if current_user.admin?
-      @subject = Subject.find(params[:id])
+    @subject = Subject.find(params[:id])
+    if @subject.user_id == current_user.id
+      @subject
     else
-      redirect_to subjects_path
+      redirect_to user_subjects_path(current_user), notice: 'Ação proibida.'
     end
   end
 
   def update
-    if current_user.admin?
-      @subject = Subject.find(params[:id])
+    @subject = Subject.find(params[:id])
+    if @subject.user_id == current_user.id
       @subject.update(subject_params)
-      redirect_to subjects_path
+      redirect_to user_subjects_path(current_user)
+    else
+      redirect_to user_subjects_path(current_user), notice: 'Ação proibida.'
     end
   end
 
   private
   def subject_params
-    params.require(:subject).permit(:name, :teacher, :photo)
+    params.require(:subject).permit(:name, :teacher, :user_id, :photo)
   end
 
 end

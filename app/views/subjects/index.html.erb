@@ -1,13 +1,18 @@
-<h3 class="page-title mb-3"><i class="fa-solid fa-graduation-cap"></i> Disciplinas</h3>
+<h3 class="page-title mb-3"><i class="fas fa-globe"></i> Campos</h3>
 
 <div class="cards text-center">
   <% @subjects.sort_by{ |subject| subject.name.downcase }.each do |subject| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path subject.photo.key, height: 300, crop: :fill %>')">
-      <%=link_to "#{subject.name.capitalize}", subject_points_path(subject) %>
+    <% if subject.photo.attached? %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path subject.photo.key, height: 300, crop: :fill %>')">
+    <% else %>
+      <div class="card-category-no-photo">
+    <% end %>
+
+      <%=link_to "#{subject.name.capitalize}", user_subject_points_path(current_user, subject) %>
     </div>
   <% end %>
 </div>
 
-<% if user_signed_in? && current_user.admin? %>
-  <%= link_to "Nova disciplina", new_subject_path, class:"btn btn-primary text-white mt-3 mb-3" %>
+<% if user_signed_in? %>
+  <%= link_to "Novo campo", new_user_subject_path(current_user), class:"btn btn-primary text-white mt-3 mb-3" %>
 <% end %>
