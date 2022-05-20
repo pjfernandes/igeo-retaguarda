@@ -43,13 +43,18 @@
 }
 
 .card-category a:hover {
+  cursor: pointer;
   color: rgb(230, 225, 225);
 }
 
-.card-category:hover{
+.card-category a:active {
   cursor: pointer;
-  font-size: 20px;
+  color: orange;
 }
+
+// .card-category:hover{
+//   font-size: 20px;
+// }
 
 .card-category-no-photo a {
   color: white;
@@ -57,17 +62,33 @@
 }
 
 .card-category-no-photo a:hover {
+  cursor: pointer;
   color: rgb(230, 225, 225);
 }
 
-.card-category-no-photo:hover {
+.card-category-no-photo a:active {
   cursor: pointer;
-  font-size: 20px;
+  color: orange;
 }
+
+// .card-category-no-photo:hover {
+//   font-size: 20px;
+// }
 
 .edit-subject {
   position: relative;
   top: 50px;
+  opacity: .7;
+}
+
+.edit-subject a:hover {
+  cursor: pointer;
+  color: lightblue;
+}
+
+.edit-subject a:active {
+  cursor: pointer;
+  color: orange;
 }
 
 // Smallest device
