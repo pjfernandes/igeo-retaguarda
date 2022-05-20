@@ -9,7 +9,12 @@
     <% end %>
 
       <%=link_to "#{subject.name.capitalize}", user_subject_points_path(current_user, subject) %>
+
+      <div class="edit-subject">
+        <a href="<%= edit_user_subject_path(current_user, subject)%>"><i class="fas fa-edit text-primary"></i></a>
+      </div>
     </div>
+
   <% end %>
 </div>
 
