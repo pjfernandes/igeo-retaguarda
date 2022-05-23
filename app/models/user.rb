@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   private
 
-  # def welcome_user
-  #   UserMailer.with(user: self).welcome.deliver_now
-  # end
+  def welcome_user
+    UserMailer.with(user: self).welcome.deliver_now
+  end
 end
