@@ -12,7 +12,7 @@
       <ul class="navbar-nav me-auto">
 
           <li class="nav-item d-flex justify-content-center">
-            <%= link_to "Campos", user_subjects_path(current_user), class: "nav-link mr-1" %>
+            <%= link_to "Campos", user_subjects_path, class: "nav-link mr-1" %>
           </li>
           <% if user_signed_in? %>
             <li class="nav-item dropdown text-center">
