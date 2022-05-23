@@ -1,4 +1,4 @@
-<h3 class="page-title mb-2"><i class="fa-solid fa-graduation-cap"></i> Adicionar disciplina</h3>
+<h3 class="page-title mb-2"><i class="fa-solid fa-earth-americas"></i> Novo campo</h3>
 
  <%= simple_form_for [current_user, @subject] do |f| %>
   <%= f.input :name, label: 'Nome', required: true %>
@@ -6,3 +6,4 @@
   <%= f.input :photo, as: :file %>
   <%= f.button :submit, "OK", class:"btn btn-primary text-white mt-2 mb-2" %>
 <% end %>
+<%= link_to "Voltar", root_path, class: "btn btn-secondary text-white mt-2 mb-2"%>
