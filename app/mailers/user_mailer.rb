@@ -5,6 +5,10 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.welcome.subject
   #
+
+  include Devise::Controllers::UrlHelpers
+  default template_path: 'users/mailer'
+
   def welcome
     @user = params[:user]
 
