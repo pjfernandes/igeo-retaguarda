@@ -67,3 +67,6 @@ gem 'pg_search', '~> 2.3.0'
 gem "turbolinks_render"
 gem "csv"
 gem 'rails_admin', '~> 2.0'
+
+gem 'letter_opener', group: :development
+gem 'postmark-rails'
