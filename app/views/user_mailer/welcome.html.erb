@@ -1,8 +1,18 @@
 <h2>Olá, <%= @user.first_name %> </h2>
 
-<p>Obrigado por utilizar o iGeo! :)</p>
+<p>Você acabou de criar sua conta no iGeo</p>
+<p>Para registrar seus pontos de trabalho de campo, siga os passos:</p>
 
-<%= link_to "Equipe iGeo", root_url %>
+<ol>
+  <li>Faça o login</li>
+  <li>Clique em novo campo</li>
+  <li>Escolha o nome do campo (p. ex. Geomorfologia Costeira)</li>
+  <li>Após o redirecionamento para a tela principal, clique no cartão do campo criado</li>
+  <li>Adicione seus pontos!</li>
+</ol>
+
+<p>Obrigado por utilizar o iGeo! :)</p>
+<%= link_to "LAGEF (UFF)", root_url %>
 
 <style>
   a {
