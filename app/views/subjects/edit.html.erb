@@ -2,7 +2,7 @@
 
 <%= simple_form_for( [current_user, @subject ], remote: true) do |f| %>
 
-  <%= f.input :name, label: 'Nome'%>
+  <%= f.input :name, label: 'Nome', hint: 'Máximo de 15 caracteres' %>
   <%= f.input :teacher, label: 'Professor'%>
   <%= f.input :photo, label: 'Foto', as: :file %>
   <%= f.button :submit, "Editar", class:"btn btn-primary text-white mt-2 mb-2 pr-4 pl-4 mr-2" %>

@@ -86,7 +86,7 @@ class PointsController < ApplicationController
     @subject = @point.subject
     if @point.user == current_user
       @point.update(point_params)
-      redirect_to subject_point_path(@point), notice: 'Ponto editado com sucesso!'
+      redirect_to point_path(@point), notice: 'Ponto editado com sucesso!'
     else
       redirect_to root_path, notice: 'Ação proibida'
     end

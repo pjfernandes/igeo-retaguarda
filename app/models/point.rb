@@ -1,4 +1,10 @@
 class Point < ApplicationRecord
+  validates :name, presence: true, length: { maximum: 15 }
+  validates :description, presence: true
+  validates :date, presence: true
+  validates :latitude, presence: true
+  validates :longitude, presence: true
+
   belongs_to :user
   belongs_to :subject
   has_many_attached :photos

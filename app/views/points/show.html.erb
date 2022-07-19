@@ -1,4 +1,3 @@
-<%# date_point = @point.date[4] + @point.date[5] + "/" + @point.date[11] +"/" + @point.date[17] + @point.date[18] + @point.date[19] + @point.date[20] %>
 <% date_point = eval(@point.date)[3].to_s + "/" + eval(@point.date)[2].to_s + "/" + eval(@point.date)[1].to_s  %>
 
 <h5 class="page-title mb-2"><i class="fa-solid fa-location-dot"></i> <%= @point.name.capitalize %> - <span class="text-primary"><%= date_point %></span></h5>
@@ -25,11 +24,9 @@
   <div class="photos">
     <% if @point.photos.attached? %>
       <% @point.photos.each do |photo| %>
-        <div>
           <a href="<%=cloudinary_url(photo.key)%>" target="_blank">
             <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill, class: "photo" %>
           </a>
-        </div>
       <% end %>
     <% end %>
   </div>
