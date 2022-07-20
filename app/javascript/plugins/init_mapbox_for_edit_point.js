@@ -1,9 +1,9 @@
 import mapboxgl from '!mapbox-gl';
 
-const latitude = document.querySelector("#point_latitude").value;
-const longitude = document.querySelector("#point_longitude").value;
+//const latitude = document.querySelector("#point_latitude").value;
+//const longitude = document.querySelector("#point_longitude").value;
 
-let coords = [longitude, latitude];
+let coords = [-43, -22];
 
 const returnCoords = () => {
   var options = {
@@ -28,15 +28,15 @@ const returnCoords = () => {
 
 //returnCoords();
 
-function buildMapEditPoint() {
+function editPoint() {
   mapboxgl.accessToken = 'pk.eyJ1IjoicGpmZXJuYW5kZXMiLCJhIjoiY2t1c291Z3lzNWg2bzJvbW5kNWNhbnZhaCJ9.eYxvagOUGuS5qDo-zOfRCA';
 
-  //if (!document.getElementById("new_point")) {
+  if (document.getElementById("map-edit-point")) {
     let map = new mapboxgl.Map({
       container: 'map-edit-point',
       style: "mapbox://styles/mapbox/satellite-v9",
       center: coords,
-      zoom: 10
+      zoom: 2
     });
 
     var el = document.createElement('div');
@@ -56,7 +56,7 @@ function buildMapEditPoint() {
 
     map.on('click', add_marker);
     return map;
-  //}
+  }
 }
 
-export { buildMapEditPoint };
+export { editPoint };
