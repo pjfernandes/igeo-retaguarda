@@ -19,7 +19,7 @@ const returnCoords = () => {
   };
 
   function error(err) {
-    coords = [longitude, latitude];
+    coords = [-43, -22];
   };
 
   navigator.geolocation.getCurrentPosition(success, error, options);
@@ -31,12 +31,12 @@ const returnCoords = () => {
 function buildMapEditPoint() {
   mapboxgl.accessToken = 'pk.eyJ1IjoicGpmZXJuYW5kZXMiLCJhIjoiY2t1c291Z3lzNWg2bzJvbW5kNWNhbnZhaCJ9.eYxvagOUGuS5qDo-zOfRCA';
 
-  if (!document.getElementById("new_point")) {
+  //if (!document.getElementById("new_point")) {
     let map = new mapboxgl.Map({
       container: 'map-edit-point',
       style: "mapbox://styles/mapbox/satellite-v9",
       center: coords,
-      zoom: 2
+      zoom: 10
     });
 
     var el = document.createElement('div');
@@ -56,7 +56,7 @@ function buildMapEditPoint() {
 
     map.on('click', add_marker);
     return map;
-  }
+  //}
 }
 
 export { buildMapEditPoint };

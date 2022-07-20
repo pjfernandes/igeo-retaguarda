@@ -32,5 +32,7 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   createCoords() ;
   buildMapNewPoint();
-  buildMapEditPoint();
+  if (document.querySelector("#map-edit-point")) {
+    buildMapEditPoint();
+  }
 });
