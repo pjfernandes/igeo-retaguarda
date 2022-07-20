@@ -2,11 +2,11 @@ class SubjectsController < ApplicationController
   #skip_before_action :authenticate_user!, only: %i[index]
 
   def index
-    @subjects = Subject.where(user_id: current_user)
+    @subjects = Subject.includes(:points).all.where(user_id: current_user)
   end
 
   def show
-    @subjects = Subject.where(user_id: current_user)
+    @subjects = Subject.includes(:points).all.where(user_id: current_user)
     if @subjects.first.user == current_user
       @subject = Subject.where(params[:id])
     else
