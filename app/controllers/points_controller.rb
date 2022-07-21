@@ -69,7 +69,7 @@ class PointsController < ApplicationController
     @point.user = current_user
     @subject = Subject.find(params[:subject_id])
     @point.subject = @subject
-    @point.name = @point.name.slice(0, 15)
+    @point.name = @point.name.slice(0, 30)
     if @point.save
       redirect_to user_subject_points_path(@subject, anchor: "point-#{@point.id}"), notice: 'Ponto adicionado com sucesso!'
     else
@@ -85,7 +85,7 @@ class PointsController < ApplicationController
   def update
     @point = Point.find(params[:id])
     @subject = @point.subject
-    @point.name = @point.name.slice(0, 15)
+    @point.name = @point.name.slice(0, 30)
     if @point.user == current_user
       @point.update(point_params)
       redirect_to point_path(@point), notice: 'Ponto editado com sucesso!'

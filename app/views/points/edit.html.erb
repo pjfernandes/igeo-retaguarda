@@ -8,7 +8,7 @@
 
 <%= simple_form_for([ @point ], remote: true) do |f| %>
 
-  <%= f.input :name, label: 'Nome', hint: 'Máximo de 15 caracteres', required: true%>
+  <%= f.input :name, label: 'Nome', hint: 'Máximo de 30 caracteres', required: true%>
   <%= f.input :latitude, label: 'Latitude', class: "latitude" %>
   <%= f.input :longitude, label: 'Longitude' %>
   <%#= f.input :date, label: 'Data', :order => [:day, :month, :year], as: :date  %>

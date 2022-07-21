@@ -7,7 +7,7 @@
      style="width: 100%; height: 300px;"> </div>
 
 <%= simple_form_for([ current_user, @subject, @point ], remote: true) do |f| %>
-  <%= f.input :name, label: 'Nome', hint: 'Máximo de 15 caracteres', required: true %>
+  <%= f.input :name, label: 'Nome', hint: 'Máximo de 30 caracteres', required: true %>
   <%= f.input :latitude, label: 'Latitude', required: true %>
   <%= f.input :longitude, label: 'Longitude', required: true %>
   <%= f.input :date, label: 'Data', :order => [:day, :month, :year], required: true, as: :date  %>
