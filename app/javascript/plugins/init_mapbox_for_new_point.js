@@ -1,6 +1,20 @@
 import mapboxgl from '!mapbox-gl';
 
-let coords = [-43, -22];
+let coords;
+
+if (document.querySelector(".map-edit-point")) {
+
+  const latitude = parseFloat(document.querySelector("#point_latitude").value);
+  const longitude = parseFloat(document.querySelector("#point_longitude").value);
+  coords = [longitude, latitude];
+
+} else {
+
+  coords = [-43, -22];
+
+}
+
+console.log(coords);
 
 const returnCoords = () => {
   var options = {
@@ -16,24 +30,50 @@ const returnCoords = () => {
   };
 
   function error(err) {
-    coords = [-43, -22];
+    let coords;
+    if (document.querySelector(".map-edit-point")) {
+
+      const latitude = parseFloat(document.querySelector("#point_latitude").value);
+      const longitude = parseFloat(document.querySelector("#point_longitude").value);
+      coords = [longitude, latitude];
+
+    } else {
+
+      coords = [-43, -22];
+
+    }
+    coords;
   };
 
   navigator.geolocation.getCurrentPosition(success, error, options);
 
 };
 
-//returnCoords();
+returnCoords();
 
 function buildMapNewPoint() {
+
+  let coords;
+
+  if (document.querySelector(".map-edit-point")) {
+
+    const latitude = parseFloat(document.querySelector("#point_latitude").value);
+    const longitude = parseFloat(document.querySelector("#point_longitude").value);
+    coords = [longitude, latitude];
+
+  } else {
+
+    coords = [-43, -22];
+
+  }
   mapboxgl.accessToken = 'pk.eyJ1IjoicGpmZXJuYW5kZXMiLCJhIjoiY2t1c291Z3lzNWg2bzJvbW5kNWNhbnZhaCJ9.eYxvagOUGuS5qDo-zOfRCA';
 
-  if (document.getElementById("new_point")) {
+  if (document.getElementById("new_point") || document.getElementById("map-new-point")) {
     let map = new mapboxgl.Map({
       container: 'map-new-point',
       style: "mapbox://styles/mapbox/satellite-v9",
       center: coords,
-      zoom: 2
+      zoom: 8
     });
 
     var el = document.createElement('div');

@@ -7,7 +7,7 @@ const buildMap = (mapElement) => {
     container: 'map',
     style: "mapbox://styles/mapbox/satellite-v9",
     center: [-43, -22],
-    zoom: 4
+    zoom: 8
   });
 };
 
@@ -28,7 +28,7 @@ const fitMapToMarkers = (map, markers) => {
   if (markers) {
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
-    map.fitBounds(bounds, { padding: 0, maxZoom: 4 });
+    map.fitBounds(bounds, { padding: 0, maxZoom: 8 });
     }
 };
 

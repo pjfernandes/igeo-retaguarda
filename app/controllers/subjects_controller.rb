@@ -22,6 +22,7 @@ class SubjectsController < ApplicationController
   def create
     @subject = Subject.new(subject_params)
     @subject.user_id = params[:user_id]
+    @subject.name = @subject.name.slice(0, 30)
     if @subject.save
       redirect_to user_subjects_path(current_user), notice: 'Campo adicionado!'
     else
@@ -40,6 +41,7 @@ class SubjectsController < ApplicationController
 
   def update
     @subject = Subject.find(params[:id])
+    @subject.name = @subject.name.slice(0, 30)
     if @subject.user_id == current_user.id
       @subject.update(subject_params)
       redirect_to user_subjects_path(current_user)
