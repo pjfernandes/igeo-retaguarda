@@ -22,7 +22,7 @@ import "bootstrap"
 import { initMapbox } from '../plugins/init_mapbox';
 import { createCoords } from '../plugins/coordinates';
 import { buildMapNewPoint } from '../plugins/init_mapbox_for_new_point';
-import { buildMapEditPoint } from '../plugins/init_mapbox_for_edit_point';
+//import { editPoint } from '../plugins/init_mapbox_for_edit_point';
 
 // CSS
 //import 'mapbox-gl/dist/mapbox-gl.css';
@@ -32,5 +32,5 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   createCoords() ;
   buildMapNewPoint();
-  buildMapEditPoint();
+  //editPoint();
 });

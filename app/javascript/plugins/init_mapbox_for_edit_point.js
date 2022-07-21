@@ -1,9 +1,9 @@
 import mapboxgl from '!mapbox-gl';
 
-//const latitude = document.querySelector("#point_latitude").value;
-//const longitude = document.querySelector("#point_longitude").value;
+const latitude = document.querySelector("#point_latitude").value;
+const longitude = document.querySelector("#point_longitude").value;
 
-let coords = [-43, -22];
+let coords = [latitude, longitude];
 
 const returnCoords = () => {
   var options = {
@@ -36,7 +36,7 @@ function editPoint() {
       container: 'map-edit-point',
       style: "mapbox://styles/mapbox/satellite-v9",
       center: coords,
-      zoom: 2
+      zoom: 10
     });
 
     var el = document.createElement('div');
