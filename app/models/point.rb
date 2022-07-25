@@ -1,5 +1,5 @@
 class Point < ApplicationRecord
-  validates :name, presence: true, length: { maximum: 15 }
+  validates :name, presence: true, length: { maximum: 30 }
   validates :description, presence: true
   validates :date, presence: true
   validates :latitude, presence: true
