@@ -50,6 +50,19 @@ class SubjectsController < ApplicationController
     end
   end
 
+  def get_subjects
+    @subjects = Subject.includes(:points).all.where(user_id: params[:id]).with_attached_photo
+
+    render json: (@subjects.map do |subject|
+      if subject.photo.attached?
+        subject.as_json.merge({ image: url_for(subject.photo )})
+      else
+         subject.as_json.merge({ image: "no" })
+      end
+    end
+    )
+  end
+
   private
   def subject_params
     params.require(:subject).permit(:name, :teacher, :user_id, :photo)

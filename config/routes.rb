@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/api/subjects/users/:id', to: 'subjects#get_subjects'
+
 end
