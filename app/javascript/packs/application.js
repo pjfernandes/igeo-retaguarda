@@ -19,9 +19,9 @@ require("channels")
 import "controllers"
 import "bootstrap"
 // internal imports
+//import { createCoords } from '../plugins/coordinates';
 import { initMapbox } from '../plugins/init_mapbox';
-import { createCoords } from '../plugins/coordinates';
-import { buildMapNewPoint } from '../plugins/init_mapbox_for_new_point';
+import { buildMapNewPoint2 } from '../plugins/init_mapbox_for_new_point';
 //import { editPoint } from '../plugins/init_mapbox_for_edit_point';
 
 // CSS
@@ -30,7 +30,7 @@ import { buildMapNewPoint } from '../plugins/init_mapbox_for_new_point';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initMapbox();
-  createCoords() ;
-  buildMapNewPoint();
+  //createCoords() ;
+  buildMapNewPoint2();
   //editPoint();
 });
