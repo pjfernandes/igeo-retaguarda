@@ -29,7 +29,7 @@ function buildMapNewPoint() {
 
   mapboxgl.accessToken = 'pk.eyJ1IjoicGpmZXJuYW5kZXMiLCJhIjoiY2t1c291Z3lzNWg2bzJvbW5kNWNhbnZhaCJ9.eYxvagOUGuS5qDo-zOfRCA';
 
-  if (document.getElementById("new_point") || document.getElementById("map-new-point")) {
+  if (document.getElementById("new_point") || document.getElementById("map-new-point") || document.getElementById("map-edit-point")) {
     let map = new mapboxgl.Map({
       container: 'map-new-point',
       style: "mapbox://styles/mapbox/satellite-v9",
