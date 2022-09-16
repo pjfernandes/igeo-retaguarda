@@ -1,5 +1,5 @@
 class PointsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: %i[get_all_points_by_user]
   def index
 
     @subject = Subject.find(params[:subject_id])
