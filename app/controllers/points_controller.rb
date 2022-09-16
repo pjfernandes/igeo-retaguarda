@@ -104,9 +104,29 @@ class PointsController < ApplicationController
     end
   end
 
-  def api_render
-
+  def get_all_points_by_user
+    @points = Point.where(user_id: params[:id]).with_attached_photos
+    point_json = {}
+    point_time = 0
+    @points.each do |point|
+      point_json[point_time] = point.as_json.merge({ image: [] })
+      if point.photos.size.positive?
+        for i in (0...point.photos.size)
+          point_json[point_time][:image] << url_for(point.photos[i])
+          point_time += 1
+        end
+      else
+         point_json[point_time] = point.as_json.merge({ image: "no" })
+      end
+    end
+    render json: point_json
   end
+
+  def get_all_points_by_user_and_subject
+    @points = Point.where(subject_id: params[:subject_id], user_id: params[:user_id]).with_attached_photos
+    render json: @points
+  end
+
 
   private
   def point_params
