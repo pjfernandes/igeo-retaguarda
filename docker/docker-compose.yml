@@ -1,0 +1,19 @@
+version: '2'
+services:
+  app:
+    # build: 
+    #   context: ../
+    #   dockerfile: docker/Dockerfile
+    #   args: 
+    #     RAILS_ENV: production
+    #     RAILS_RELATIVE_URL_ROOT: /igeo
+    # ports: 
+    #   - "3000:80"
+    image: app.sti.uff.br/igeo:VERSION
+    environment:
+      RAILS_ENV: BRANCH
+      RAILS_RELATIVE_URL_ROOT: /igeo
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always

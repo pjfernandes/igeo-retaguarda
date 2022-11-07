@@ -127,6 +127,12 @@ class PointsController < ApplicationController
     render json: @points
   end
 
+  def igeo_post
+    params = { 'hello' => 'world'}
+    x = Net::HTTP.post_form(URI.parse('https://httpbin.org/anything'), params)
+    render json: x.body
+  end
+
 
   private
   def point_params
