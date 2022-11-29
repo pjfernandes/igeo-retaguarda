@@ -11,5 +11,9 @@
     "mapbox-gl": "^2.7.1",
     "stimulus": "^3.0.1",
     "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^4.7.4"
   }
 }
