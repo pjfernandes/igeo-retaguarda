@@ -1,22 +1,17 @@
 FROM ruby:2.7.3
 
-# Set correct environment variables.
 ENV HOME /root
 
 ARG RAILS_ENV
 ARG RAILS_RELATIVE_URL_ROOT
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && apt-get update && apt-get install -y nginx nodejs libmagickwand-dev \
- default-mysql-client  imagemagick pandoc cron yarn
+RUN apt-get update && apt-get install -y nginx nodejs default-mysql-client
 
+# throw errors if Gemfile has been modified since Gemfile.lock
+RUN bundle config --global frozen 1
 
-# Instala o phantom
-RUN curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 | tar xj && \
- cp phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/bin/ && yarn install --check-files 
+WORKDIR /usr/src/app/chamada-inteligente
 
-WORKDIR /usr/src/app/umm
-
-# Copia o Gemfile antes de aplicação para permitir o cache do bundle install
 COPY Gemfile Gemfile.lock ./
 
 # Copia a aplicação em si
@@ -35,5 +30,4 @@ RUN rm /etc/nginx/sites-enabled/default
 RUN rm -rf /tmp/* /var/tmp/* && apt-get clean
 
 # Executa o Nginx e o Puma
-CMD cron && service nginx start && bundle exec puma -C config/puma.rb
-# CMD cron && service nginx start && bundle exec puma -t 5:5 -p 3000 -e homologacao -C config/puma.rb
+CMD service nginx start && bundle exec puma -C config/puma.rb
