@@ -78,8 +78,14 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+# production:
+#   <<: *default
+#   database: igeo_production
+#   username: igeo
+#   password: <%= ENV['IGEO_DATABASE_PASSWORD'] %>
 production:
   <<: *default
-  database: igeo_production
-  username: igeo
-  password: <%= ENV['IGEO_DATABASE_PASSWORD'] %>
+  adapter: postgres
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['DATABASE_URL'] %>
