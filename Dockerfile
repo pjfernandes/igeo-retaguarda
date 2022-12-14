@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y nginx nodejs default-mysql-client
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
 
-WORKDIR /usr/src/app/chamada-inteligente
+WORKDIR /usr/src/app/igeo
 
 COPY Gemfile Gemfile.lock ./
 
