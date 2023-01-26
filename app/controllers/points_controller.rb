@@ -1,5 +1,7 @@
 class PointsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[get_all_points_by_user]
+  skip_before_action :verify_authenticity_token
+
   def index
 
     @subject = Subject.find(params[:subject_id])
@@ -69,12 +71,12 @@ class PointsController < ApplicationController
     @point.user = current_user
     @subject = Subject.find(params[:subject_id])
     @point.subject = @subject
-    @point.name = @point.name.slice(0, 30)
     if @point.save
       redirect_to user_subject_points_path(@subject, anchor: "point-#{@point.id}"), notice: 'Ponto adicionado com sucesso!'
     else
       render :new
     end
+
   end
 
   def edit

@@ -1,4 +1,5 @@
 RailsAdmin.config do |config|
+  config.asset_source = :webpack
 
   ### Popular gems integration
 

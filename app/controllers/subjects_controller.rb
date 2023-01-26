@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
   #skip_before_action :authenticate_user!, only: %i[index]
-  skip_before_action :authenticate_user!, only: %i[get_subjects]
+  skip_before_action :authenticate_user!, only: %i[get_subjects post_subject]
 
   def index
     @subjects = Subject.includes(:points).all.where(user_id: current_user)
@@ -64,9 +64,18 @@ class SubjectsController < ApplicationController
     )
   end
 
+  def post_subject
+    @subject = Subject.new(subject_params)
+    if @subject.save
+      render json: {status: 'SUCCESS', message:'Saved subject', data:@subject}, status: :ok
+    else
+      render json: {status: 'ERROR', message:'subject not saved', data:@subject.erros}, status: :unprocessable_entity
+    end
+  end
+
   private
   def subject_params
-    params.require(:subject).permit(:name, :teacher, :user_id, :photo)
+    params.require(:subject).permit(:name, :user_id, :photo)
   end
 
 end

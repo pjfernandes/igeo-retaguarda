@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'igeo@igeo.com'
-  layout 'mailer'
+  default from: "from@example.com"
+  layout "mailer"
 end
