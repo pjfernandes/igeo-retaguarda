@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController
-  #skip_before_action :authenticate_user!, only: %i[index]
+  ##skip_before_action :authenticate_user!, only: %i[index]
   skip_before_action :authenticate_user!, only: %i[get_subjects post_subject]
 
   def index
