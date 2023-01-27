@@ -108,7 +108,7 @@ class PointsController < ApplicationController
 
   def get_all_points_by_user
     @points = Point.where(user_id: params[:id]).with_attached_photos
-    point_json = {}
+    point_json = []
     point_time = 0
     @points.each do |point|
       point_json[point_time] = point.as_json.merge({ image: [] })
@@ -138,7 +138,7 @@ class PointsController < ApplicationController
 
   private
   def point_params
-    params.require(:point).permit(:name, :latitude, :longitude, :date, :time, :description, :user_id, :subject_id, photos: [])
+    params.require(:point).permit(:name, :latitude, :longitude, :date, :time, :description, :user_id, :subject_id, :favorite, photos: [])
   end
 
 end
