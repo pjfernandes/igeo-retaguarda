@@ -1,5 +1,5 @@
 class PointsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[get_all_points_by_user]
+  skip_before_action :authenticate_user!, only: %i[get_all_points_by_user post_point]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -133,6 +133,15 @@ class PointsController < ApplicationController
     params = { 'hello' => 'world'}
     x = Net::HTTP.post_form(URI.parse('https://httpbin.org/anything'), params)
     render json: x.body
+  end
+
+  def post_point
+    @point = Point.new(point_params)
+    if @point.save
+      render json: {status: 'SUCCESS', message:'Saved point', data: @point}, status: :ok
+    else
+      render json: {status: 'ERROR', message:'point not saved', data: @point.erros}, status: :unprocessable_entity
+    end
   end
 
 
