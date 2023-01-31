@@ -1,5 +1,5 @@
 class PointsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[get_all_points_by_user post_point]
+  skip_before_action :authenticate_user!, only: %i[get_all_points_by_user post_point get_last_point_id]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -147,6 +147,17 @@ class PointsController < ApplicationController
     else
       render json: {status: 'ERROR', message:'point not saved', data: @point.erros}, status: :unprocessable_entity
     end
+  end
+
+  def get_last_point_id
+    @points = Point.where(user_id: params[:id]).with_attached_photos
+
+    if @points.empty?
+      render json: 0
+    else
+      render json: @points.last.id
+    end
+
   end
 
 
