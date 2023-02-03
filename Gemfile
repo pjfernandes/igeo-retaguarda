@@ -86,3 +86,5 @@ gem "csv"
 gem 'rails_admin'
 gem "cssbundling-rails"
 gem 'sass-rails'
+gem 'jquery-rails', '4.3.1'
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
